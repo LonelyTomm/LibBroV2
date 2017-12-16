@@ -1,0 +1,67 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+/*navbar*/
+#customNavbar{
+	background-color: #6ffccf;
+}
+a.logoBrand{
+	font-family: 'Gloria Hallelujah', cursive;
+}
+/*navbar end*/
+/*content*/
+.content-body{
+	margin-top: 65px;
+	margin-bottom: 55px;
+}
+.content-body>.container{
+	background-color: white;
+	border-radius: 3px;
+	min-height:72vh;
+}
+.sidebar-menu{
+	
+}
+.sidebar-menu>li>a{
+	text-decoration: none;
+	color: black;
+	font-size: 10pt;
+}
+.sidebar-menu>li>a:hover{
+	color: #6ffccf;
+}
+.bookprof>a#title{
+	font-size: 15pt;
+}
+.bookprof>a>img{
+	width: 92px;
+	height: 140px;
+}
+.bookprof>span{
+	font-size: 13pt;
+}
+.page-nav-butt{
+	padding: 10px 0px;
+}
+.page-nav-butt>a{
+	font-size: 15pt;
+}
+/*content end*/
+/*footer*/
+.footinfo{
+	font-family: 'Gloria Hallelujah';
+	background-color: #6ffccf;
+}
+.footinfo>p{
+	margin: 0;
+}
+.footinfo>a{
+	color: black;
+	text-decoration: underline;
+}
+.footinfo>a:hover{
+	color: white;
+	text-decoration: none;
+}
+/*footer end*/
