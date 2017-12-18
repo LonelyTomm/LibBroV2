@@ -11,9 +11,14 @@
 |
 */
 
-Route::get('/{page?}', 'IndexController@indexFunc');
+Route::get('/logout', 'IndexController@logOut');
+Route::get('/index/{page?}', 'IndexController@indexFunc');
 
 Route::get('/desc/{id}','IndexController@getDescription');
+Route::get('/genre/{genre}/{page?}','IndexController@getGenre');
+
+Route::post('/find','IndexController@find');
 
 Auth::routes();
 
+Route::get('/home/show', 'IndexController@indexFunc')->name('home');

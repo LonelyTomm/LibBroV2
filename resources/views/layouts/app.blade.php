@@ -23,7 +23,7 @@
   <body>
 
     <nav class="navbar navbar-expand-md navbar-light fixed-top" style="background-color: #6ffccf">
-      <a class="navbar-brand logoBrand text-white" href="#">LibBro</a>
+      <a class="navbar-brand logoBrand text-white" href="/index">LibBro</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -31,7 +31,7 @@
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="/index">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link disabled" href="#">Add</a>
@@ -40,15 +40,28 @@
             <a class="nav-link disabled" href="#">Borrow Log</a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">User</a>
+            <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              @auth
+              {{Auth::user()->login}}
+              @else
+              User
+              @endauth
+            </a>
             <div class="dropdown-menu" aria-labelledby="dropdown01">
-              <a class="dropdown-item" href="#">Sign In</a>
-              <a class="dropdown-item" href="#">Sign Up</a>
+              @auth
+              <a class="dropdown-item" href="/logout">Logout</a>
+              @if(Auth::user()->type=='M')
+              <a class="dropdown-item" href="/register">Register New Student</a>
+              @endif
+              @else
+              <a class="dropdown-item" href="/login">Sign In</a>
+              @endauth
             </div>
           </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+        <form class="form-inline my-2 my-lg-0" method="POST" action="/find">
+          {{ csrf_field() }}
+          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="searchQuery" required>
           <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
         </form>
       </div>
