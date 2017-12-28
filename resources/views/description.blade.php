@@ -24,6 +24,15 @@
 			<div class="col-md-12">
 				{{$book->description}}
 			</div>
+			@if(Auth::check()&&(Auth::user()->type=='S'))
+			<div class="col-md-12">
+				<a class="btn btn-primary" href="/borrow/book/{{$book->id}}" role="button">Borrow Book</a>
+			</div>
+			@elseif(Auth::check()&&(Auth::user()->type=='M'))
+			<div class="col-md-12">
+				<a class="btn btn-primary" href="/modify/book/{{$book->id}}" role="button">Modify Book</a>
+			</div>
+			@endif
 		</div>
 	</div>
 </main>

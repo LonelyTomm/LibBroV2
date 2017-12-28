@@ -18,8 +18,12 @@ $factory->define(App\User::class, function (Faker $faker) {
 
     return [
         'name' => $faker->name,
-        'email' => $faker->unique()->safeEmail,
-        'password' => $password ?: $password = bcrypt('secret'),
+        'email' => 'mngr@jerh.com',
+        'password' => bcrypt('123456'),
+        'login'=>'manager',
+        'phonenumber'=>'256854851245',
+        'birth'=>'1998-10-15',
+        'type'=>'M',
         'remember_token' => str_random(10),
     ];
 });

@@ -34,10 +34,18 @@
             <a class="nav-link" href="/index">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link disabled" href="#">Add</a>
+            @if(Auth::check()&&(Auth::user()->type=='M'))
+            <a class="nav-link" href="/book/add">Add</a>
+            @else
+            <a class="nav-link disabled" href="/book/add">Add</a>
+            @endif
           </li>
           <li class="nav-item">
-            <a class="nav-link disabled" href="#">Borrow Log</a>
+             @if(Auth::check()&&(Auth::user()->type=='M'))
+              <a class="nav-link" href="/BorrowLog">Borrow Log</a>
+             @else
+              <a class="nav-link disabled" href="/BorrowLog">Borrow Log</a>
+             @endif
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -52,6 +60,9 @@
               <a class="dropdown-item" href="/logout">Logout</a>
               @if(Auth::user()->type=='M')
               <a class="dropdown-item" href="/register">Register New Student</a>
+              @endif
+              @if(Auth::user()->type=='S')
+              <a class="dropdown-item" href="/return">Return Book</a>
               @endif
               @else
               <a class="dropdown-item" href="/login">Sign In</a>
